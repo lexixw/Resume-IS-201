@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bob the Blob – Runner</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #00111f;
+        font-family: sans-serif;
+    }
+    #ui {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        background: rgba(0,0,0,0.5);
+        padding: 10px;
+        border-radius: 6px;
+        color: white;
+    }
+    select, input {
+        margin: 4px 0;
+        width: 150px;
+    }
+    #endMessage {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+        text-align: center;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+<div id="ui">
+    <label> Zone:</label><br>
+    <select id="bgSelect">
+        <option value="deep">Deep Ocean</option>
+        <option value="coral">Coral Zone</option>
+        <option value="shore">Shallow Shore</option>
+        <option value="jungle">Jungle</option>
+        <option value="tundra">Tundra</option>
+        <option value="desert">Desert</option>
+        <option value="city">Night City</option>
+    </select><br>
+
+    <label>Bob Color:</label><br>
+    <input type="color" id="bobColor" value="#00aaff" /><br>
+
+    <button id="startBtn">Start Game</button>
+    <a href="Resume.html">Back to Resume</a>
+</div>
+
+<canvas id="game" width="900" height="300"></canvas>
+<div id="endMessage">Bob the Blob survived 1 minute!<br>He now happily drifts through the reef with his blob friends.</div>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let bob = { x: 50, y: 240, w: 40, h: 40, vy: 0, jump: false };
+let gravity = 0.4;
+let obstacles = [];
+let backgroundBits = [];
+let running = false;
+let bgType = "deep";
+let bobColor = "#00aaff";
+let startTime = 0;
+
+function setBackground() {
+    if (bgType === "deep") document.body.style.background = "linear-gradient(#00111f, #000814)";
+    if (bgType === "coral") document.body.style.background = "linear-gradient(#00334d, #005f73)";
+    if (bgType === "shore") document.body.style.background = "linear-gradient(#7dd3fc, #bae6fd)";
+    if (bgType === "jungle") document.body.style.background = "linear-gradient(#013220, #025939)";
+    if (bgType === "tundra") document.body.style.background = "linear-gradient(#e0f7ff, #b3e5fc)";
+    if (bgType === "desert") document.body.style.background = "linear-gradient(#f7d9a0, #d2a56a)";
+    if (bgType === "city") document.body.style.background = "linear-gradient(#000013, #001133)";
+}
+
+function spawnObstacle() {
+    // Very few obstacles to keep difficulty low
+    if (Math.random() < 0.993) return;
+    obstacles.push({ x: 900, y: 260, w: 20, h: 40 });
+}
+
+function spawnBackgroundBits() {
+    // Very subtle background bits that drift slowly
+    if (Math.random() < 0.97) return;
+    backgroundBits.push({ x: 900, y: Math.random()*250+20, size: Math.random()*6+3, alpha: 0.12 });
+};
+
+
+function spawnBackgroundBits() {
+    if (Math.random() < 0.97) return; // very rare
+    backgroundBits.push({ x: 900, y: Math.random()*250+20, size: Math.random()*6+3, alpha: 0.15 });
+}
+
+function update() {
+    if (!running) return;
+
+    ctx.clearRect(0,0,900,300);
+
+    // background bits
+    backgroundBits.forEach(b => {
+        b.x -= 0.6;
+        ctx.fillStyle = `rgba(255,255,255,${b.alpha})`;
+        ctx.fillRect(b.x, b.y, b.size, b.size);
+    });
+    backgroundBits = backgroundBits.filter(b => b.x + b.size > 0);
+(0,0,900,300);
+
+    bob.vy += gravity;
+    bob.y += bob.vy;
+
+    if (bob.y > 240) {
+        bob.y = 240;
+        bob.jump = false;
+    }
+
+    ctx.fillStyle = bobColor;
+    ctx.fillRect(bob.x, bob.y, bob.w, bob.h);
+
+    obstacles.forEach(o => {
+        o.x -= 2.2;
+        ctx.fillStyle = "#223";
+        ctx.fillRect(o.x, o.y, o.w, o.h);
+    });
+
+    obstacles = obstacles.filter(o => o.x + o.w > 0);
+
+    obstacles.forEach(o => {
+        if (bob.x < o.x + o.w && bob.x + bob.w > o.x && bob.y + bob.h > o.y) {
+            running = false;
+            alert("Bob collided! Try again.");
+        }
+    });
+
+    spawnObstacle();
+
+    let elapsed = (Date.now() - startTime) / 1000;
+    if (elapsed >= 45) {
+        running = false;
+        document.getElementById("endMessage").style.display = "block";
+    }
+
+    requestAnimationFrame(update);
+}
+
+window.addEventListener("keydown", e => {
+    if (e.code === "Space" && !bob.jump) {
+        bob.vy = -18;
+        bob.jump = true;
+    }
+});
+
+document.getElementById("bgSelect").onchange = e => {
+    bgType = e.target.value;
+    setBackground();
+};
+
+document.getElementById("bobColor").onchange = e => {
+    bobColor = e.target.value;
+};
+
+document.getElementById("startBtn").onclick = () => {
+    obstacles = [];
+    bob.x = 50;
+    bob.y = 240;
+    bob.vy = 0;
+    running = true;
+    startTime = Date.now();
+    document.getElementById("endMessage").style.display = "none";
+    setBackground();
+    update();
+};
+</script>
+</body>
+</html>

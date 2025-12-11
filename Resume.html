@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Resume — Alexis Wilson</title>
+<style>
+:root {
+  --accent: #3b82f6;
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #ffffff);
+  color: var(--text);
+  padding: 24px;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 6px 30px rgba(2,6,23,0.08);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+.header {
+  padding: 28px;
+  background: linear-gradient(180deg, rgba(59,130,246,0.06), transparent);
+  border-right: 1px solid rgba(15,23,42,0.04);
+}
+.photo {
+  width: 140px;
+  height: 165px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 4px solid white;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.08);
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+.name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.role { color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+.contact {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.badge { display:inline-block; padding:6px 10px; border-radius:999px; background:var(--accent); color:white; font-weight:600; margin-top:10px; font-size:13px; }
+.main { padding: 28px; }
+.section { margin-bottom: 18px; }
+.section h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  color: #111827;
+}
+.hr { height:1px; background:linear-gradient(90deg, transparent, rgba(15,23,42,0.06), transparent); margin:12px 0 18px; border-radius:4px; }
+.summary p { margin:0; color:var(--muted); line-height:1.6; }
+ul { margin: 6px 0 0 18px; color:var(--muted); }
+.skills { display:flex; gap:8px; flex-wrap:wrap; }
+.skill { padding:8px 10px; background:#0f172a10; border-radius:8px; font-weight:600; color:var(--muted); font-size:13px; }
+@media (max-width:800px) {
+  .container { grid-template-columns: 1fr; }
+  .header { border-right: none; border-bottom: 1px solid rgba(15,23,42,0.04); text-align: center; }
+  .photo { margin: 0 auto 16px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <aside class="header">
+    <div class="photo">
+      <img src="Images/resumepicture.jpg" alt="Profile">
+    </div>
+    <h1 class="name">Alexis Wilson</h1>
+    <div class="role">Aspiring Forensic Accountant • Pre-Business (B.S.) at BYU</div>
+    <div class="badge">A.A.S. — Utah State University (Graduated at 17)</div>
+    <div class="hr"></div>
+    <div class="contact">
+     <strong>Contact</strong><br>
+      Email: alexiswilson749@gmail.com<br>
+      Phone: (435) 241-0333<br>
+      Location: Provo, Utah
+      <br>
+      <br>
+      <strong>Demonstration Game</strong><Br>
+        <a href="Bobgame.html">Bob the Blob game</a>
+      <br>
+      <br>
+      <strong>Scratch Website</strong> <br>
+      <a href="index.html">Story Through Dance</a>
+    </div>
+  </aside>
+
+  <section class="main">
+    <div class="section summary">
+      <h3>Professional Summary</h3>
+      <p>Detail‑oriented pre‑business student with strong analytical and quantitative skills, pursuing a career in forensic accounting. Demonstrated academic excellence with a 3.90 high school GPA, a 3.73 GPA in an Applied Science associate degree, and early degree completion at age 17. Brings a diverse background in customer service, financial transactions, operational support, and leadership. Committed to accuracy, compliance, and high‑quality work in fast‑paced environments.</p>
+    </div>
+
+    <div class="section">
+      <h3>Education</h3>
+      <div>
+        <strong>Brigham Young University (BYU)</strong> — B.S. Pre‑Business (In Progress)<br>
+        <em>Relevant Interests:</em> Accounting, Compliance, Fraud Examination, Business Analytics
+      </div><br>
+
+      <div>
+        <strong>Utah State University (USU)</strong> — Associate of Applied Science (A.A.S.)<br>
+        GPA: 3.73 — Completed at age 17
+      </div><br>
+
+      <div>
+        <strong>High School Diploma</strong> — Graduated with High Honors<br>
+        GPA: 3.90 • Seal of Biliteracy in American Sign Language
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Experience</h3>
+
+      <div>
+        <strong>Party Host — Bowling Alley</strong>
+        <ul>
+          <li>Delivered high‑quality customer service while coordinating parties and managing group logistics.</li>
+          <li>Handled cash, POS transactions, customer requests, and issue resolution efficiently.</li>
+          <li>Maintained organized event flow, time management, and guest satisfaction.</li>
+        </ul>
+      </div><br>
+
+      <div>
+        <strong>Food Truck Team Member</strong>
+        <ul>
+          <li>Managed high‑volume service operations, balancing speed, accuracy, and quality control.</li>
+          <li>Performed food prep, inventory checks, and compliance with food‑safety standards.</li>
+          <li>Handled POS systems and cash transactions with accuracy and accountability.</li>
+        </ul>
+      </div><br>
+
+      <div>
+        <strong>Babysitter / Child Care Provider</strong>
+        <ul>
+          <li>Demonstrated responsibility, reliability, and communication in supervising multiple children.</li>
+          <li>Built trust with families through consistent, safety‑focused care.</li>
+        </ul>
+      </div><br>
+
+      <div>
+        <strong>Tire & Lube Mechanic</strong>
+        <ul>
+          <li>Performed vehicle inspections, routine maintenance, and safety checks with precision.</li>
+          <li>Followed strict procedural guidelines and documented work accurately.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Certifications</h3>
+      <ul>
+        <li>Food Handler's Permit</li>
+        <li>Seal of Biliteracy — American Sign Language</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Leadership & Activities</h3>
+      <ul>
+        <li>Competitive Dancer — 4 years (Team Captain)</li>
+        <li>Gymnastics experience; coached tumbling and youth athletes</li>
+        <li>Strong mentorship skills and ability to lead groups effectively</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Skills</h3>
+      <div class="skills">
+        <span class="skill">Financial Accuracy</span>
+        <span class="skill">Mathematics</span>
+        <span class="skill">Analytical Thinking</span>
+        <span class="skill">Customer Service</span>
+        <span class="skill">Cash Handling / POS</span>
+        <span class="skill">Problem Solving</span>
+        <span class="skill">ASL Communication</span>
+        <span class="skill">Team Leadership</span>
+      </div>
+    </div>
+      <div class="section">
+      <h3>Additional Academic Achievements</h3>
+      <ul>
+        <li>Weighted GPA: 4.10 • Unweighted GPA: 3.90</li>
+        <li>ACT Composite: 28 (Math 32, Reading 28, English 28, Science 25)</li>
+        <li>Superintendent Award Recipient</li>
+        <li>First student in 9 years at high school to complete an Associate degree while enrolled</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Teamwork & Professional Values</h3>
+      <ul>
+        <li>Strong collaborative skills built through years of competitive dance involving synchronized routines, trust-driven stunts, and team coordination.</li>
+        <li>Dedicated to fostering positive work environments and improving the day of customers, colleagues, and clients.</li>
+        <li>Committed to ethical standards in business and accounting; values integrity, transparency, and accountability in all professional settings.</li>
+        <li>Believes in mutual trust and professionalism among colleagues to achieve organizational goals.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Tutoring & Mentorship</h3>
+      <ul>
+        <li>Experienced math tutor, helping struggling students raise failing grades to passing through personalized instruction and encouragement.</li>
+        <li>Developed strong communication and teaching skills while adapting explanations to individual learning needs.</li>
+      </ul>
+       <p>click<a href = "#top">  here</a> to go back to the top</p>
+    </div>
+  </section>
+</div>
+</body>
+</html>
